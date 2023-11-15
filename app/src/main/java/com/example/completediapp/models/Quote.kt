@@ -1,6 +1,6 @@
 package com.example.completediapp.models
 
-data class QuoteItem(
+data class Quote(
     val _id: String,
     val author: String,
     val authorSlug: String,
