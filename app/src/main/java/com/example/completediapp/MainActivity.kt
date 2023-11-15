@@ -2,6 +2,7 @@ package com.example.completediapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.completediapp.viewModels.MainViewModel
@@ -15,6 +16,9 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
+    val textView: TextView
+        get() = findViewById(R.id.textView)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
         viewModel.quotesLiveData.observe(this, Observer {
-            val result = it
+            textView.text = it.joinToString{s-> s.content + "\n\n"}
         })
 
     }

@@ -7,8 +7,9 @@ import com.example.completediapp.models.Quote
 import com.example.completediapp.repository.QuoteRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel(private val repository: QuoteRepository) : ViewModel(){
+class MainViewModel @Inject constructor(private val repository: QuoteRepository) : ViewModel(){
     val quotesLiveData: LiveData<List<Quote>>
         get() = repository.quotes
 
